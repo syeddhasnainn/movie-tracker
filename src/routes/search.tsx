@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { createFileRoute, Link } from '@tanstack/react-router'
 
 type TitleSearch = {
@@ -37,7 +36,7 @@ function RouteComponent() {
   return (
     <div className="text-ring">
       <ul className="flex gap-4 flex-col pb-4">
-        {searchResults.results.map((result) => (
+        {searchResults.results.map((result: any) => (
           <Link to={'/movie/$id'} params={{ id: result.id }}>
             <li key={result.id}>
               <div className="flex gap-2">

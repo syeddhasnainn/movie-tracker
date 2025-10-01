@@ -90,7 +90,7 @@ function RouteComponent() {
           </div>
 
           <div className="flex gap-2 text-sm py-2">
-            {movie.genres.map((g) => (
+            {movie.genres.map((g: any) => (
               <div
                 key={g.id}
                 className="border py-1 px-2 rounded-md text-muted-foreground border-muted text-xs"
@@ -169,7 +169,7 @@ function RouteComponent() {
         <div className="grid grid-cols-6 gap-3 py-4">
           {similar?.results.map((m: any) =>
             m.poster_path ? (
-              <Link key={m.id} to={`/movie/${m.id}`}>
+              <Link key={m.id} to={`/movie/$id`} params={{ id: String(m.id) }}>
                 <div className="flex flex-col gap-2">
                   <img
                     className="object-cover aspect-[2/3] w-full rounded-md"

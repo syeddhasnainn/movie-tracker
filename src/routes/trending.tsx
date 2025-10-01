@@ -2,9 +2,6 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Suspense } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
-import { api } from '../../convex/_generated/api'
-import { Button } from '@/components/ui/button'
-
 export const Route = createFileRoute('/trending')({
   component: App,
 })
@@ -37,9 +34,10 @@ function Products() {
 
   return (
     <ul className="grid grid-cols-4 gap-1">
-      {(trending?.results || []).map((p) => (
+      {(trending?.results || []).map((p: any) => (
         <Link
-          to={`/movie/${p.id}`}
+          to={`/movie/$id`}
+          params={{ id: String(p.id) }}
           className="text-muted-foreground overflow-hidden"
           key={p.id}
         >
