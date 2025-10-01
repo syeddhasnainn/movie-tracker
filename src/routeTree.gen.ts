@@ -15,7 +15,6 @@ import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MovieIdRouteImport } from './routes/movie.$id'
-import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 
 const WatchlistRoute = WatchlistRouteImport.update({
   id: '/watchlist',
@@ -47,11 +46,6 @@ const MovieIdRoute = MovieIdRouteImport.update({
   path: '/movie/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
-  id: '/demo/tanstack-query',
-  path: '/demo/tanstack-query',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -59,7 +53,6 @@ export interface FileRoutesByFullPath {
   '/signin': typeof SigninRoute
   '/trending': typeof TrendingRoute
   '/watchlist': typeof WatchlistRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +61,6 @@ export interface FileRoutesByTo {
   '/signin': typeof SigninRoute
   '/trending': typeof TrendingRoute
   '/watchlist': typeof WatchlistRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRoutesById {
@@ -78,7 +70,6 @@ export interface FileRoutesById {
   '/signin': typeof SigninRoute
   '/trending': typeof TrendingRoute
   '/watchlist': typeof WatchlistRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/movie/$id': typeof MovieIdRoute
 }
 export interface FileRouteTypes {
@@ -89,17 +80,9 @@ export interface FileRouteTypes {
     | '/signin'
     | '/trending'
     | '/watchlist'
-    | '/demo/tanstack-query'
     | '/movie/$id'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/search'
-    | '/signin'
-    | '/trending'
-    | '/watchlist'
-    | '/demo/tanstack-query'
-    | '/movie/$id'
+  to: '/' | '/search' | '/signin' | '/trending' | '/watchlist' | '/movie/$id'
   id:
     | '__root__'
     | '/'
@@ -107,7 +90,6 @@ export interface FileRouteTypes {
     | '/signin'
     | '/trending'
     | '/watchlist'
-    | '/demo/tanstack-query'
     | '/movie/$id'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +99,6 @@ export interface RootRouteChildren {
   SigninRoute: typeof SigninRoute
   TrendingRoute: typeof TrendingRoute
   WatchlistRoute: typeof WatchlistRoute
-  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   MovieIdRoute: typeof MovieIdRoute
 }
 
@@ -165,13 +146,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MovieIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/tanstack-query': {
-      id: '/demo/tanstack-query'
-      path: '/demo/tanstack-query'
-      fullPath: '/demo/tanstack-query'
-      preLoaderRoute: typeof DemoTanstackQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -181,7 +155,6 @@ const rootRouteChildren: RootRouteChildren = {
   SigninRoute: SigninRoute,
   TrendingRoute: TrendingRoute,
   WatchlistRoute: WatchlistRoute,
-  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   MovieIdRoute: MovieIdRoute,
 }
 export const routeTree = rootRouteImport
